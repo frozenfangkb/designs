@@ -8,16 +8,23 @@ class BasicDesignScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          // Imagen cabecera
+          // Header image
           Image(image: AssetImage('assets/landscape.jpg'),),
 
-          // Titulo
-          Title()
+          // Title
+          Title(),
+
+          // Button Section
+          ButtonSection(),
+
+          // Description
+          Container(margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),child: Text('Pariatur duis pariatur cillum amet Lorem. Deserunt pariatur exercitation do officia qui duis consequat duis qui. Sint labore et irure nostrud id occaecat commodo et quis proident.'))
         ]
       )
    );
   }
 }
+
 
 class Title extends StatelessWidget {
   const Title({
@@ -43,6 +50,49 @@ class Title extends StatelessWidget {
         Icon(Icons.star, color: Colors.red),
         Text('41')
       ],),
+    );
+  }
+}
+
+class ButtonSection extends StatelessWidget {
+  const ButtonSection({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          CustomButton(icon: Icons.phone, text: 'CALL'),
+          CustomButton(icon: Icons.near_me, text: 'ROUTE'),
+          CustomButton(icon: Icons.share, text: 'SHARE'),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+
+  final IconData icon;
+  final String text;
+
+  const CustomButton({
+    Key? key, 
+    required this.icon, 
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Icon(this.icon, color: Colors.indigoAccent,),
+        Text(this.text, style: TextStyle(color: Colors.indigo))
+      ],
     );
   }
 }
